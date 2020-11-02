@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.cdsp.customer.dao.PscstPrdtCvrMapper">
+
+    <resultMap id="BaseResultMap" type="com.sh.cdsp.customer.po.PscstPrdtCvr">
+        <result column="BIZ_DT" jdbcType="TIMESTAMP" property="bizDt" />
+        <result column="ECIF_CUST_NO" jdbcType="VARCHAR" property="ecifCustNo" />
+        <result column="DEP_FLG" jdbcType="VARCHAR" property="depFlg" />
+        <result column="DBTCD_FLG" jdbcType="VARCHAR" property="dbtcdFlg" />
+        <result column="PLM_PY_FLG" jdbcType="VARCHAR" property="plmPyFlg" />
+        <result column="PY_GTWY_FLG" jdbcType="VARCHAR" property="pyGtwyFlg" />
+        <result column="SFSRV_EQP_SGNG_FLG" jdbcType="VARCHAR" property="sfsrvEqpSgngFlg" />
+        <result column="ATMBL_MRTG_FLG" jdbcType="VARCHAR" property="atmblMrtgFlg" />
+        <result column="HS_MRTG_FLG" jdbcType="VARCHAR" property="hsMrtgFlg" />
+        <result column="HLPFM_ETMN_FLG" jdbcType="VARCHAR" property="hlpfmEtmnFlg" />
+        <result column="PSNL_MANG_LN_FLG" jdbcType="VARCHAR" property="psnlMangLnFlg" />
+        <result column="PSNL_CNSM_LN_FLG" jdbcType="VARCHAR" property="psnlCnsmLnFlg" />
+        <result column="ETC_FLG" jdbcType="VARCHAR" property="etcFlg" />
+        <result column="CSCRD_FLG" jdbcType="VARCHAR" property="cscrdFlg" />
+        <result column="MBLBNK_FLG" jdbcType="VARCHAR" property="mblbnkFlg" />
+        <result column="EBP_SGNG_FLG" jdbcType="VARCHAR" property="ebpSgngFlg" />
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        BIZ_DT,ECIF_CUST_NO,DEP_FLG,DBTCD_FLG,PLM_PY_FLG,PY_GTWY_FLG,SFSRV_EQP_SGNG_FLG,ATMBL_MRTG_FLG,HS_MRTG_FLG,HLPFM_ETMN_FLG,PSNL_MANG_LN_FLG,
+		 PSNL_CNSM_LN_FLG,ETC_FLG,CSCRD_FLG,MBLBNK_FLG,EBP_SGNG_FLG
+    </sql>
+
+    <sql id="Page_Where" >
+    limit #{pageInfo.pageSize} offset #{pageInfo.beforeOffset}
+    </sql>
+
+
+
+    <select id="queryPscstPrdtCvrDetailByEcifCustNo" parameterType="com.sh.cdsp.customer.po.PscstPrdtCvr" resultMap="BaseResultMap" >
+      SELECT
+        <include refid="Base_Column_List" />
+       FROM pscst_prdt_cvr
+       WHERE ECIF_CUST_NO = #{ecifCustNo,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
